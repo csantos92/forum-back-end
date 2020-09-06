@@ -1,2 +1,2 @@
 # forum-back-end
- Forum back-end made with NodeJS
+ NodeJS back-end
