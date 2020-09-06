@@ -130,7 +130,7 @@ var controller = {
                 }
 
                 //Return data
-                return res.status(404).send({
+                return res.status(200).send({
                     status: 'success',
                     topics
                 });
@@ -161,7 +161,7 @@ var controller = {
                 }
 
                 //Return data
-                return res.status(404).send({
+                return res.status(200).send({
                     status: 'success',
                     topic
                 });
