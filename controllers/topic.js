@@ -144,6 +144,7 @@ var controller = {
         //Find topic by id
         Topic.findById(topicId)
             .populate('user')
+            .populate('comments.user')
             .exec((err, topic) => {
                 if (err) {
                     //Return message
@@ -273,6 +274,7 @@ var controller = {
                 { "lang": { '$regex': searchString, '$options': 'i' } }
             ]
         })
+        .populate('user')
         .exec((err, topics) => {
             if (err) {
                 //Return message

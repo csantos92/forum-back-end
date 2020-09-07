@@ -60,11 +60,32 @@ var controller = {
                             });
                         }
 
-                        //Return data
-                        return res.status(200).send({
-                            status: 'success',
-                            topic
-                        });
+                        //Find topic by id
+                        Topic.findById(topic._id)
+                            .populate('user')
+                            .populate('comments.user')
+                            .exec((err, topic) => {
+                                if (err) {
+                                    //Return message
+                                    return res.status(500).send({
+                                        status: 'error',
+                                        message: 'Error en la petición'
+                                    });
+                                }
+                                if (!topic) {
+                                    //Return message
+                                    return res.status(404).send({
+                                        status: 'error',
+                                        message: 'No existe el tema'
+                                    });
+                                }
+
+                                //Return data
+                                return res.status(200).send({
+                                    status: 'success',
+                                    topic
+                                });
+                            });
                     });
 
                 } else {
@@ -172,11 +193,32 @@ var controller = {
                         });
                     }
 
-                    //Return data
-                    return res.status(200).send({
-                        status: 'success',
-                        topic
-                    });
+                    //Find topic by id
+                    Topic.findById(topic._id)
+                        .populate('user')
+                        .populate('comments.user')
+                        .exec((err, topic) => {
+                            if (err) {
+                                //Return message
+                                return res.status(500).send({
+                                    status: 'error',
+                                    message: 'Error en la petición'
+                                });
+                            }
+                            if (!topic) {
+                                //Return message
+                                return res.status(404).send({
+                                    status: 'error',
+                                    message: 'No existe el tema'
+                                });
+                            }
+
+                            //Return data
+                            return res.status(200).send({
+                                status: 'success',
+                                topic
+                            });
+                        });
                 });
 
             } else {
